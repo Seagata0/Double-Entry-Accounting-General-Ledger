@@ -1,6 +1,3 @@
-
-package tubespbo;
-
 public abstract class Ledger {
     private String ledgerName;
     private double totalDebit;
@@ -18,4 +15,19 @@ public abstract class Ledger {
         setLedgerName(ledgerName);
     }
     
+    public void setTotalDebit(double totalDebit) {
+        this.totalDebit = totalDebit;
+    }
+
+    public void setTotalCredit(double totalCredit) {
+        this.totalCredit = totalCredit;
+    }
+    
+    public double getTotalCredit() {
+        return totalCredit;
+    }
+
+    public double getTotalDebit() {
+        return totalDebit;
+    }
 }

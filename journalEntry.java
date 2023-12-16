@@ -1,10 +1,7 @@
-package tubespbo;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-/**
- *
- * @author madhan
- */
+
 public class journalEntry {
     private int JENumber;
     private Date date;
@@ -15,49 +12,61 @@ public class journalEntry {
     private Account accCr;
     private paymentDebit dr;
     private paymentCredit cr;
-    private double amountDr;
-    private double amountCr;
+    private double amount;
     
-    public void journalEntry(generalLedger genLedger) {
-        Scanner scanner = new Scanner(System.in);
+    public journalEntry(generalLedger genLedger) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter JENumber: ");
+            setJENumber(scanner.nextInt());
 
-        System.out.print("Enter JENumber: ");
-        setJENumber(scanner.nextInt());
+            System.out.print("Enter description: ");
+            setDesc(scanner.next());
 
-        System.out.print("Enter description: ");
-        desc = scanner.next();
+            System.out.print("Enter namaAccDr: ");
+            namaAccDr = scanner.next();
 
-        System.out.print("Enter namaAccDr: ");
-        namaAccDr = scanner.next();
+            System.out.print("Enter namaAccCr: ");
+            namaAccCr = scanner.next();
 
-        System.out.print("Enter namaAccCr: ");
-        namaAccCr = scanner.next();
-
-        System.out.print("Enter amountDr: ");
-        amountDr = scanner.nextDouble();
-
-        System.out.print("Enter amountCr: ");
-        amountCr = scanner.nextDouble();
+            System.out.print("Enter amount: ");
+            amount = scanner.nextDouble();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter again.");
+        }
         
-        dr = new paymentDebit(amountDr);
-        cr = new paymentCredit(amountCr);
+        dr = new paymentDebit(amount, date);
+        cr = new paymentCredit(amount, date);
 
-        findAccount(namaAccDr, genLedger).addDebit(dr);
-        findAccount(namaAccCr, genLedger).addCredit(cr);
+        accDr = findAccount(namaAccDr, genLedger);
+        accCr = findAccount(namaAccCr, genLedger);
+
+        accCr.addCredit(cr);
+        accDr.addDebit(dr);
+        System.out.println("Done!");
     }
-    private Account findAccount(String namaAcc, generalLedger genLedger) {
+    public Account findAccount(String namaAcc, generalLedger gLedger) {
+        for (subLedger subledger : gLedger.getSubLedgers().values()) {
+            Account account = subledger.getAccount(namaAcc);
+            if (account != null) {
+                return account;
+            }
+        }
         return null;
     }
 
-    private void setJENumber(int JENumber) {
+    public void setJENumber(int JENumber) {
         this.JENumber = JENumber;
     }
 
-    private int getJENumber() {
+    public int getJENumber() {
         return JENumber;
     }
 
-    public void save() {
-        
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 }

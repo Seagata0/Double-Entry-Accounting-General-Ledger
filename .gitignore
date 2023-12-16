@@ -1,0 +1,9 @@
+.vscode/settings.json
+Account.class
+generalLedger.class
+journalEntry.class
+Ledger.class
+paymentDebit.class
+paymentCredit.class
+subLedger.class
+Yuuka.class

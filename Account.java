@@ -1,42 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package projectpbo;
+import java.util.List;
+import java.util.ArrayList;
 
-/**
- *
- * @author ACER
- */
 public class Account {
     private String accName;
     private double totalDebit;
     private double totalCredit;
-    private Payment[] cr;
-    private Payment[] dr;
     private boolean isDebit;
+    private List<paymentCredit> cr;
+    private List<paymentDebit> dr;
+    private List<Boolean> debit;
 
     public Account(String accName, boolean isDebit) {
+        this.cr = new ArrayList<>();
+        this.dr = new ArrayList<>();
+        this.debit = new ArrayList<>();
         this.accName = accName;
         this.isDebit = isDebit;
     }
 
     public void update() {
-        Subledger.updateSubledger(this);
+        setTotalCredit(0.0); 
+        setTotalDebit(0.0);
+        for(int i=0; i<cr.size();i++){
+            setTotalCredit(getTotalCredit() + cr.get(i).getCredit());
+        }
+        for(int j=0; j<dr.size();j++){
+            setTotalDebit(getTotalDebit() + dr.get(j).getDebit());
+        }
     }
      
-    public void addDebit(Double amount) {
-        totalDebit += amount;
-        Payment payment = new Payment(amount);
-        dr = addPayment(dr, payment);
+    public void addDebit(paymentDebit Dr) {
+        dr.add(Dr);
+        debit.add(true);
         update();
     }
     
-    public void addCredit(Double amount) {
-        totalCredit += amount;
-        Payment payment = new Payment(amount);
-        cr = addPayment(cr, payment);
+    public void addCredit(paymentCredit Cr) {
+        cr.add(Cr);
+        debit.add(false);
         update();
     }
 
@@ -55,5 +56,33 @@ public class Account {
     public boolean isIsDebit() {
         return isDebit;
     }
-      
+
+    public List<paymentCredit> getCr() {
+        return cr;
+    }
+
+    public List<paymentDebit> getDr() {
+        return dr;
+    }
+
+    public List<Boolean> getDebit() {
+        return debit;
+    }
+    
+
+    public void setTotalCredit(double totalCredit) {
+        this.totalCredit = totalCredit;
+    }
+
+    public void setTotalDebit(double totalDebit) {
+        this.totalDebit = totalDebit;
+    }
+    
+    public double getTotalCredit() {
+        return totalCredit;
+    }
+
+    public double getTotalDebit() {
+        return totalDebit;
+    }
 }

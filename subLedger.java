@@ -1,28 +1,31 @@
-
-package tubespbo;
-
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class subLedger extends Ledger {
-    private Map<String, Account> accounts;
-    private String accName;
-    private boolean isDebit;
-//    private double totalDebit;
-//    private double totalCredit;
-    
-    public void Subledger(String ledgerName){
+    public Map<String, Account> accounts;
+    Scanner scanner = new Scanner(System.in);
+
+    public subLedger(String ledgerName){
         setLedgerName(ledgerName);
+        accounts = new HashMap<>();
     }
     
-    public void createAccount(String accName, boolean isDebit) {
-        Account newAccount = new Account();
+    public void createAccount(String accName, Boolean isDebit) {
+        Account newAccount = new Account(accName, isDebit);
         accounts.put(accName, newAccount);
-        this.isDebit = isDebit;
     }
     
     public void updateSubLedger(){ 
-        //sega dah buat
-    
+        setTotalCredit(0.0); 
+        setTotalDebit(0.0);
+        for (Account akun : accounts.values()) {
+            setTotalDebit(getTotalDebit() + akun.getTotalDebit());
+            setTotalCredit(getTotalCredit() + akun.getTotalCredit());
+        }
+    }
+
+    public Account getAccount(String accName) {
+        return accounts.get(accName);
     }
 }

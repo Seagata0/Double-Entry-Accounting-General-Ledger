@@ -1,25 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package tubespbo;
 import java.util.Date;
-/**
- *
- * @author ACER
- */
+
 public class paymentCredit {
     private Date tanggal;
     private double amount;
 
     public paymentCredit(double amount, Date tanggal) {
-        this.amount = amount;
+        setCredit(amount);
+        setTanggal(tanggal);
+    }
+
+    public void setTanggal(Date tanggal) {
         this.tanggal = tanggal;
+    }
+
+    public Date getTanggal() {
+        return tanggal;
     }
 
     public void setCredit(double amount) {
         this.amount = amount;
+    }
+
+    public void add(double amount){
+        setCredit(getCredit()+amount);
     }
 
     public double getCredit() {

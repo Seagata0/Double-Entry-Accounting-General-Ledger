@@ -48,18 +48,21 @@ Ini adalah kelas yang berfungsi sebagai tampilan antarmuka User dan Software.
 ![Diagram](img/diagram.png)  
 
 # **Class**
+
+
 ## **Yuuka**
->Driver to control the entire thing
+>Class Driver untuk melakukan berbagai tugas
 
 **Method**
 + inputJournalEntry()
-+ deleteJournalEntry()
++ DeleteJournalEntry()
 + Initialize generalLedger()
-+ createAcc()
 + createSubledger()
++ createAcc()
 + printTAccount()
++ printTrialBalance()
 + printBalanceSheet()
-+ printJournalEntry()
++ pilihan() : int
 
 ## **journalEntry** 
 >Journal Entry menginisialisasi pembuatan payment dan menginputnya pada account
