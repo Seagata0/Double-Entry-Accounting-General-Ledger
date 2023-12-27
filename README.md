@@ -3,7 +3,7 @@
 - Seagata
 - Andi Ahmad
 - Rivan
-- Mursyid
+- Mursyid Najib Muhana (1301210411)
 - Rashad
 
 <br>
