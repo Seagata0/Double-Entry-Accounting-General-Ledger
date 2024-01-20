@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="500.0" maxWidth="920.0" minHeight="500.0" minWidth="920.0" prefHeight="500.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generalLedgerYuuka.Controller">
+   <children>
+      <AnchorPane prefHeight="60.0" prefWidth="920.0" style="-fx-background-color: #39a8fb;">
+         <children>
+            <Label ellipsisString="" layoutX="311.0" layoutY="10.0" text="GENERAL LEDGER" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Gontserrat Bold" size="32.0" />
+               </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="30.0" prefWidth="60.0" text="BACK">
+               <font>
+                  <Font name="Gontserrat SemiBold" size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="mark" layoutX="158.0" layoutY="14.0" opacity="0.0" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #39a8fb;" text="GE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="60.0" prefHeight="440.0" prefWidth="920.0" style="-fx-background-color: #FBFCFE;">
+         <children>
+            <TextField fx:id="textGL" layoutX="304.0" layoutY="166.0" prefHeight="40.0" prefWidth="310.0">
+               <font>
+                  <Font name="Archive" size="18.0" />
+               </font></TextField>
+            <Label layoutX="231.0" layoutY="122.0" text="MASUKKAN NAMA GENERAL LEDGER">
+               <font>
+                  <Font name="Gontserrat SemiBold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="saveGL" layoutX="405.0" layoutY="217.0" mnemonicParsing="false" onAction="#saveGLedger" prefHeight="40.0" prefWidth="110.0" text="Save">
+               <font>
+                  <Font name="Archive" size="21.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

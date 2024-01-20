@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="generalLedgerYuuka.Controller">
+   <children>
+      <AnchorPane prefHeight="60.0" prefWidth="920.0" style="-fx-background-color: #39a8fb;">
+         <children>
+            <Label layoutX="356.0" layoutY="10.0" text="SUB LEDGER" textFill="WHITE">
+               <font>
+                  <Font name="Gontserrat Bold" size="32.0" />
+               </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="30.0" prefWidth="60.0" text="BACK">
+               <font>
+                  <Font name="Gontserrat SemiBold" size="13.0" />
+               </font>
+            </Button>
+            <TextField fx:id="mark" layoutX="516.0" layoutY="19.0" opacity="0.0" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #39a8fb;" text="SL" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="60.0" prefHeight="440.0" prefWidth="800.0" style="-fx-background-color: #FBFCFE;">
+         <children>
+            <TableView fx:id="tableSL" layoutX="180.0" prefHeight="440.0" prefWidth="740.0">
+              <columns>
+                <TableColumn fx:id="colSLID" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="ID" />
+                <TableColumn fx:id="colSLName" maxWidth="538.0" minWidth="538.0" prefWidth="538.0" text="Nama" />
+              </columns>
+            </TableView>
+            <TextField fx:id="textSL" layoutX="25.0" layoutY="39.0" prefHeight="26.0" prefWidth="140.0" />
+            <Label layoutX="25.0" layoutY="11.0" text="NAMA">
+               <font>
+                  <Font name="Gontserrat SemiBold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="32.0" layoutY="357.0" mnemonicParsing="false" onAction="#DeleteAcc" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #2e6bc2;" text="DELETE" textFill="WHITE">
+               <font>
+                  <Font name="Gontserrat SemiBold" size="22.0" />
+               </font>
+            </Button>
+            <Button layoutX="32.0" layoutY="303.0" mnemonicParsing="false" onAction="#newSLedger" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #2e6bc2;" text="INPUT" textFill="WHITE">
+               <font>
+                  <Font name="Gontserrat SemiBold" size="22.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
